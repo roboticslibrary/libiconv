@@ -17,9 +17,15 @@
 
 #include <config.h>
 
-#include "libcharset.h"
+#if HAVE_VISIBILITY && BUILDING_DLL
+# define RELOCATABLE_DLL_EXPORTED __attribute__((__visibility__("default")))
+#elif defined _MSC_VER && BUILDING_DLL
+# define RELOCATABLE_DLL_EXPORTED __declspec(dllexport)
+#else
+# define RELOCATABLE_DLL_EXPORTED
+#endif
 
-extern LIBCHARSET_DLL_EXPORTED void
+extern RELOCATABLE_DLL_EXPORTED void
 libcharset_set_relocation_prefix (const char *orig_prefix, const char *curr_prefix);
 
 /* This is a stub for binary backward-compatibility.  */
