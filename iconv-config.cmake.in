@@ -1,6 +1,10 @@
-set(Iconv_VERSION "@VERSION@")
-set(Iconv_VERSION_MAJOR "@VERSION_MAJOR@")
-set(Iconv_VERSION_MINOR "@VERSION_MINOR@")
+set(Iconv_VERSION "@LIBICONV_VERSION@")
+set(Iconv_VERSION_MAJOR "@LIBICONV_VERSION_MAJOR@")
+set(Iconv_VERSION_MINOR "@LIBICONV_VERSION_MINOR@")
+
+set(Charset_VERSION "@LIBCHARSET_VERSION@")
+set(Charset_VERSION_MAJOR "@LIBCHARSET_VERSION_MAJOR@")
+set(Charset_VERSION_MINOR "@LIBCHARSET_VERSION_MINOR@")
 
 @PACKAGE_INIT@
 
@@ -9,6 +13,10 @@ include("${CMAKE_CURRENT_LIST_DIR}/iconv-export.cmake")
 set(Iconv_DEFINITIONS "")
 set(Iconv_INCLUDE_DIRS "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_INCLUDEDIR@")
 set(Iconv_LIBRARY_DIRS "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_LIBDIR@")
+
+set(Charset_DEFINITIONS "")
+set(Charset_INCLUDE_DIRS "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_INCLUDEDIR@")
+set(Charset_LIBRARY_DIRS "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_LIBDIR@")
 
 macro(select_library_location target basename)
 	foreach(property IN ITEMS IMPORTED_LOCATION IMPORTED_IMPLIB)
@@ -36,3 +44,4 @@ macro(select_library_location target basename)
 endmacro()
 
 select_library_location(Iconv::Iconv Iconv)
+select_library_location(Iconv::Charset Charset)
