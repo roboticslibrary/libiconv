@@ -287,7 +287,7 @@ set_target_properties(
 	VERSION ${LIBCHARSET_SOVERSION}
 )
 
-if(WIN32)
+if(MSVC)
 	if(BUILD_SHARED_LIBS)
 		set_target_properties(
 			Charset
@@ -401,7 +401,7 @@ set_target_properties(
 	VERSION ${LIBICONV_SOVERSION}
 )
 
-if(WIN32)
+if(MSVC)
 	if(BUILD_SHARED_LIBS)
 		set_target_properties(
 			Iconv
