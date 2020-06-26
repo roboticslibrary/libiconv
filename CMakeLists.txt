@@ -140,14 +140,14 @@ function(genaliases SUFFIX DEFINITIONS)
 		DEPENDS genaliases${SUFFIX}
 	)
 	add_custom_command(
-		OUTPUT lib/aliases${SUFFIX}.gperf.h
-		COMMAND ${GPERF_EXECUTABLE} -m 10 lib/aliases${SUFFIX}.gperf > lib/aliases${SUFFIX}.gperf.h
+		OUTPUT lib/aliases${SUFFIX}.tmp
+		COMMAND ${GPERF_EXECUTABLE} -m 10 lib/aliases${SUFFIX}.gperf > lib/aliases${SUFFIX}.tmp
 		DEPENDS lib/aliases${SUFFIX}.gperf
 	)
 	add_custom_command(
 		OUTPUT lib/aliases${SUFFIX}.h
-		COMMAND ${CMAKE_COMMAND} -DINPUT_FILENAME=${CMAKE_CURRENT_BINARY_DIR}/lib/aliases${SUFFIX}.gperf.h -DOUTPUT_FILENAME=${CMAKE_CURRENT_BINARY_DIR}/lib/aliases${SUFFIX}.h -P ${CMAKE_CURRENT_SOURCE_DIR}/cmake/gperf-static.cmake
-		DEPENDS cmake/gperf-static.cmake lib/aliases${SUFFIX}.gperf.h
+		COMMAND ${CMAKE_COMMAND} -DINPUT_FILENAME=${CMAKE_CURRENT_BINARY_DIR}/lib/aliases${SUFFIX}.tmp -DOUTPUT_FILENAME=${CMAKE_CURRENT_BINARY_DIR}/lib/aliases${SUFFIX}.h -P ${CMAKE_CURRENT_SOURCE_DIR}/cmake/gperf-static.cmake
+		DEPENDS cmake/gperf-static.cmake lib/aliases${SUFFIX}.tmp
 	)
 	add_custom_command(
 		OUTPUT lib/canonical${SUFFIX}.h
