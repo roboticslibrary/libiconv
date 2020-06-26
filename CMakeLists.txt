@@ -141,7 +141,7 @@ function(genaliases SUFFIX DEFINITIONS)
 	)
 	add_custom_command(
 		OUTPUT lib/aliases${SUFFIX}.tmp
-		COMMAND ${GPERF_EXECUTABLE} -m 10 lib/aliases${SUFFIX}.gperf > lib/aliases${SUFFIX}.tmp
+		COMMAND ${GPERF_EXECUTABLE} -m 10 --output-file=${CMAKE_CURRENT_BINARY_DIR}/lib/aliases${SUFFIX}.tmp ${CMAKE_CURRENT_BINARY_DIR}/lib/aliases${SUFFIX}.gperf
 		DEPENDS lib/aliases${SUFFIX}.gperf
 	)
 	add_custom_command(
