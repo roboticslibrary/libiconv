@@ -233,6 +233,8 @@ add_library(
 	libcharset/lib/relocatable-stub.c
 )
 
+add_library(Iconv::Charset ALIAS Charset)
+
 target_compile_definitions(
 	Charset
 	PRIVATE
@@ -342,6 +344,8 @@ add_library(
 	lib/translit.h
 	libcharset/lib/localcharset.c
 )
+
+add_library(Iconv::Iconv ALIAS Iconv)
 
 target_compile_definitions(
 	Iconv
