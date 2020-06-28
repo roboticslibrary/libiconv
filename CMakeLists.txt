@@ -469,6 +469,12 @@ if(LIBICONV_BUILD_DOCUMENTATION)
 	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/man/iconvctl.3.html DESTINATION ${CMAKE_INSTALL_DATADIR}/doc/libiconv COMPONENT documentation)
 endif()
 
+export(
+	TARGETS Charset Iconv
+	NAMESPACE Iconv::
+	FILE ${CMAKE_CURRENT_BINARY_DIR}/iconv-export.cmake
+)
+
 configure_package_config_file(
 	iconv-config.cmake.in iconv-config.cmake
 	INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/iconv-${LIBICONV_VERSION}
