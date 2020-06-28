@@ -10,7 +10,7 @@ find_package_handle_standard_args(
 	GPERF_EXECUTABLE
 )
 
-if(GPERF_EXECUTABLE AND NOT TARGET Gperf::Gperf)
-	add_executable(Gperf::Gperf IMPORTED GLOBAL)
-	set_target_properties(Gperf::Gperf PROPERTIES IMPORTED_LOCATION "${GPERF_EXECUTABLE}")
+if(GPERF_EXECUTABLE AND NOT TARGET gperf::gperf)
+	add_executable(gperf::gperf IMPORTED)
+	set_target_properties(gperf::gperf PROPERTIES IMPORTED_LOCATION "${GPERF_EXECUTABLE}")
 endif()
