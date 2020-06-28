@@ -10,7 +10,7 @@ find_package_handle_standard_args(
 	MAN2HTML_EXECUTABLE
 )
 
-if(MAN2HTML_EXECUTABLE AND NOT TARGET Man2html::Man2html)
-	add_executable(Man2html::Man2html IMPORTED GLOBAL)
-	set_target_properties(Man2html::Man2html PROPERTIES IMPORTED_LOCATION "${MAN2HTML_EXECUTABLE}")
+if(MAN2HTML_EXECUTABLE AND NOT TARGET man2html::man2html)
+	add_executable(man2html::man2html IMPORTED GLOBAL)
+	set_target_properties(man2html::man2html PROPERTIES IMPORTED_LOCATION "${MAN2HTML_EXECUTABLE}")
 endif()
