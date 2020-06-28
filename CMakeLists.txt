@@ -39,7 +39,12 @@ option(LIBICONV_ENABLE_EXTRA "Enable a few rarely used encodings" OFF)
 option(LIBICONV_ENABLE_NLS "Translate program messages to user's native language" OFF)
 option(LIBICONV_ENABLE_RELOCATABLE "Install a package that can be moved in the file system" ON)
 
-find_package(Gperf REQUIRED)
+if(NOT TARGET gperf::gperf)
+	find_package(Gperf CONFIG)
+	if(NOT TARGET gperf::gperf)
+		find_package(Gperf REQUIRED)
+	endif()
+endif()
 
 check_symbol_exists(EILSEQ "errno.h" HAVE_EILSEQ)
 if(NOT HAVE_EILSEQ)
