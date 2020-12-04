@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.11)
+cmake_minimum_required(VERSION 3.2)
 file(STRINGS ${INPUT_FILENAME} LINES)
 file(STRINGS ${PATTERNS_FILENAME} PATTERNS)
 file(WRITE ${OUTPUT_FILENAME} "")
